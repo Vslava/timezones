@@ -1,6 +1,7 @@
 {
   "env": {
-    "node": true,
+    "browser": true,
+    "es6": true
   },
   "root": true,
   "parser": "@typescript-eslint/parser",
@@ -8,10 +9,12 @@
     "@typescript-eslint"
   ],
   "parserOptions": {
-    "project": "tsconfig.json",
-    "tsconfigRootDir": ".",
-    "ecmaVersion": 2020,
-    "sourceType": "module"
+    "project": "./tsconfig.json",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "es2020": true
+    }
   },
   "extends": [
     "airbnb-typescript",
