@@ -1,0 +1,7 @@
+{
+  "name": "timezones",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Viacheslav Voytovich <voytovich.slava@gmail.com>",
+  "license": "MIT"
+}
