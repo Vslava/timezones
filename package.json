@@ -4,6 +4,14 @@
   "main": "index.js",
   "author": "Viacheslav Voytovich <voytovich.slava@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "yarn run clear && NODE_ENV=production npx webpack --mode production",
+    "dev-build": "yarn run clear && npx webpack --mode development",
+    "lint": "npx eslint . -ext .ts",
+    "clear": "rm -rf ./dist/*",
+    "-postinstall": "yarn run build",
+    "start": "node bin/heroku"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "normalize.css": "^8.0.1",
