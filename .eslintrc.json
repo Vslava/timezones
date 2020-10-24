@@ -23,6 +23,7 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "rules": {
-    "no-console": "off"
+    "no-console": "off",
+    "import/extensions": "off"
   }
 }
