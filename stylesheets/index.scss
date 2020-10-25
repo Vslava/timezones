@@ -1,1 +1,35 @@
 @import "~normalize.css";
+
+#timezones {
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+}
+
+.timezone {
+  text-align: center;
+  padding: 10em 1em;
+  flex-grow: 1;
+  font-family: sans-serif;
+  border-width: 1px;
+  border-style: solid;
+  border-color: lightgray transparent lightgray lightgray;
+
+  .zone-time {
+    font-weight: 400;
+    font-size: 5em;
+    margin: 0 0 0.5em 0;
+  }
+
+  .zone-name {
+    font-weight: 400;
+    font-size: 1.5em;
+    margin: 0.5em 0;
+  }
+
+  .zone-date {
+    text-transform: uppercase;
+    color: grey;
+    margin: 0.5em 0;
+  }
+}
