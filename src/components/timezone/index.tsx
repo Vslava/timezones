@@ -1,5 +1,7 @@
 import React from 'react';
 
+import style from './style.scss';
+
 interface ITimezoneProps {
   zoneName: string,
   dateTime: Date,
@@ -21,10 +23,10 @@ function Timezone({ zoneName, dateTime }: ITimezoneProps): JSX.Element {
   );
 
   return (
-    <div className="timezone">
-      <p className="zone-time">{zoneTime}</p>
-      <p className="zone-name">{zoneName}</p>
-      <p className="zone-date">{zoneDate}</p>
+    <div className={style.timezone}>
+      <p className={style.zoneTime}>{zoneTime}</p>
+      <p className={style.zoneName}>{zoneName}</p>
+      <p className={style.zoneDate}>{zoneDate}</p>
     </div>
   );
 }

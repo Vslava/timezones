@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Timezone from '../timezone';
 
+import style from './style.scss';
+
 interface ITimezonesProps {
   zoneNames: string[],
 }
@@ -48,7 +50,7 @@ class Timezones extends Component<ITimezonesProps, ITimezonesState> {
     } = this.state;
 
     return (
-      <div id="timezones">
+      <div className={style.timezones}>
         {
           zoneNames.map((zoneName) => (
             <Timezone
