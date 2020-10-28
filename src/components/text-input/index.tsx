@@ -3,6 +3,7 @@ import React, { ChangeEvent, Component } from 'react';
 interface IInputProps {
   value: string,
   onEnter?: (text: string) => void,
+  className?: string,
 }
 
 interface IInputState {
@@ -49,6 +50,7 @@ class Input extends Component<IInputProps, IInputState> {
   };
 
   render(): JSX.Element {
+    const { className } = this.props;
     const { text: value } = this.state;
 
     return (
@@ -58,6 +60,7 @@ class Input extends Component<IInputProps, IInputState> {
         onKeyDown={this.keyDownHandler}
         onChange={this.changeHandler}
         onBlur={this.blurHandler}
+        className={className}
       />
     );
   }
