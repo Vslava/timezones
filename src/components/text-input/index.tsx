@@ -27,6 +27,14 @@ class Input extends Component<IInputProps, IInputState> {
     }
   };
 
+  private keyDownHandler = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+    const { onEnter, value: oldValue } = this.props;
+
+    if (onEnter && ev.key === 'Escape') {
+      onEnter(oldValue);
+    }
+  };
+
   private changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
 
@@ -47,6 +55,7 @@ class Input extends Component<IInputProps, IInputState> {
       <input
         value={value}
         onKeyPress={this.keyPressHandler}
+        onKeyDown={this.keyDownHandler}
         onChange={this.changeHandler}
         onBlur={this.blurHandler}
       />
