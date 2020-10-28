@@ -45,6 +45,16 @@ class Timezone extends Component<ITimezoneProps, ITimezoneState> {
     this.setState({ zoneName });
   };
 
+  private zoneNameValidator = (zoneName: string): boolean => {
+    try {
+      zoneDateAndTime(new Date(), zoneName);
+
+      return true;
+    } catch (err) {
+      return false;
+    }
+  };
+
   render(): JSX.Element {
     const { dateTime } = this.props;
     const { zoneName } = this.state;
@@ -66,6 +76,7 @@ class Timezone extends Component<ITimezoneProps, ITimezoneState> {
           style={zoneNameAreaStyle}
           zoneName={zoneName}
           onZoneNameChange={this.zoneNameChangeHandler}
+          isZoneNameValid={this.zoneNameValidator}
         />
         <p className={style.zoneDate}>{zoneDate}</p>
       </div>

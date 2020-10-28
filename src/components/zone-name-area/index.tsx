@@ -15,6 +15,7 @@ interface IZoneNameAreaProps {
   zoneName: string,
   style: IElementsStyle,
   onZoneNameChange: (zoneName: string) => void,
+  isZoneNameValid?: (zoneName: string) => boolean,
 }
 
 class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
@@ -30,9 +31,16 @@ class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
   };
 
   private zoneNameInputEnterHandler = (text: string) => {
-    const { onZoneNameChange } = this.props;
+    const {
+      onZoneNameChange,
+      isZoneNameValid,
+    } = this.props;
 
     if (onZoneNameChange) {
+      if (isZoneNameValid && !isZoneNameValid(text)) {
+        return;
+      }
+
       this.setState({ isRenameInputShown: false });
       onZoneNameChange(text);
     }
