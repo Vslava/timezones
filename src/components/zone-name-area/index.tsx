@@ -44,9 +44,10 @@ class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
     </p>
   );
 
-  private zoneNameInput = (zoneName: string) => (
+  private zoneNameInput = (zoneName: string, className: string) => (
     <div>
       <TextInput
+        className={className}
         value={zoneName}
         onEnter={this.zoneNameInputEnterHandler}
         autoFocus
@@ -59,7 +60,7 @@ class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
     const { zoneName, style } = this.props;
 
     return isRenameInputShown
-      ? this.zoneNameInput(zoneName)
+      ? this.zoneNameInput(zoneName, style.inputClassName)
       : this.zoneNameText(zoneName, style.textClassName);
   }
 }
