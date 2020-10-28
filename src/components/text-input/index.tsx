@@ -4,6 +4,7 @@ interface IInputProps {
   value: string,
   onEnter?: (text: string) => void,
   className?: string,
+  autoFocus?: boolean,
 }
 
 interface IInputState {
@@ -50,7 +51,7 @@ class Input extends Component<IInputProps, IInputState> {
   };
 
   render(): JSX.Element {
-    const { className } = this.props;
+    const { className, autoFocus } = this.props;
     const { text: value } = this.state;
 
     return (
@@ -61,6 +62,8 @@ class Input extends Component<IInputProps, IInputState> {
         onChange={this.changeHandler}
         onBlur={this.blurHandler}
         className={className}
+        // eslint-disable-next-line jsx-a11y/no-autofocus
+        autoFocus={autoFocus}
       />
     );
   }

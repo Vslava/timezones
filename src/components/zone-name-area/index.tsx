@@ -46,7 +46,11 @@ class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
 
   private zoneNameInput = (zoneName: string) => (
     <div>
-      <TextInput value={zoneName} onEnter={this.zoneNameInputEnterHandler} />
+      <TextInput
+        value={zoneName}
+        onEnter={this.zoneNameInputEnterHandler}
+        autoFocus
+      />
     </div>
   );
 
