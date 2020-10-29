@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import { toast } from 'react-toastify';
 
 import TextInput from '../text-input';
 
@@ -46,6 +47,7 @@ class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
     if (onZoneNameChange) {
       if (isZoneNameValid && !isZoneNameValid(text)) {
         this.setState({ isZoneNameValid: false });
+        toast.error('The zone name is invalid');
         return;
       }
 
