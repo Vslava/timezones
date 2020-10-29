@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 
 import TextInput from '../text-input';
 
 interface IElementsStyle {
   textClassName: string,
   inputClassName: string,
+  invalidZoneNameClassName: string,
 }
 
 interface IZoneNameAreaState {
   isRenameInputShown: boolean;
+  isZoneNameValid: boolean;
 }
 
 interface IZoneNameAreaProps {
@@ -23,11 +26,15 @@ class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
     super(props);
     this.state = {
       isRenameInputShown: false,
+      isZoneNameValid: true,
     };
   }
 
   private clickHandler = () => {
-    this.setState({ isRenameInputShown: true });
+    this.setState({
+      isRenameInputShown: true,
+      isZoneNameValid: true,
+    });
   };
 
   private zoneNameInputEnterHandler = (text: string) => {
@@ -38,6 +45,7 @@ class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
 
     if (onZoneNameChange) {
       if (isZoneNameValid && !isZoneNameValid(text)) {
+        this.setState({ isZoneNameValid: false });
         return;
       }
 
@@ -64,11 +72,16 @@ class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
   );
 
   render(): JSX.Element {
-    const { isRenameInputShown } = this.state;
+    const { isRenameInputShown, isZoneNameValid } = this.state;
     const { zoneName, style } = this.props;
 
+    const inputClasses = classNames(
+      style.inputClassName,
+      { [style.invalidZoneNameClassName]: !isZoneNameValid },
+    );
+
     return isRenameInputShown
-      ? this.zoneNameInput(zoneName, style.inputClassName)
+      ? this.zoneNameInput(zoneName, inputClasses)
       : this.zoneNameText(zoneName, style.textClassName);
   }
 }

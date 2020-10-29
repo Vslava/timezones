@@ -67,6 +67,7 @@ class Timezone extends Component<ITimezoneProps, ITimezoneState> {
     const zoneNameAreaStyle = {
       textClassName: style.zoneName,
       inputClassName: style.zoneName,
+      invalidZoneNameClassName: style.wrong,
     };
 
     return (
