@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { ToastContainer } from 'react-toastify';
 
-import 'react-toastify/dist/ReactToastify.css';
-
+import NotifyArea from '../notify-area';
 import Timezones from '../timezones';
 
 interface IAppState {
@@ -26,17 +24,7 @@ class App extends Component<unknown, IAppState> {
 
     return (
       <div id="layout">
-        <ToastContainer
-          position="top-center"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
+        <NotifyArea />
         <Timezones
           zoneNames={zoneNames}
         />
