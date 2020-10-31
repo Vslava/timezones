@@ -5,3 +5,4 @@ See time in different timezones simultaneously
 - add a panel with a new timezone
 - drag and drop panels
 - resize the text size when the panels changes size
+- suggest a zone name during typing
