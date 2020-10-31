@@ -1,13 +1,11 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-interface ILayoutProps {
-  children: ReactNode,
-}
+import Timezones from '../timezones';
 
-function Layout({ children }: ILayoutProps): JSX.Element {
+function App(): JSX.Element {
   return (
     <div id="layout">
       <ToastContainer
@@ -21,9 +19,14 @@ function Layout({ children }: ILayoutProps): JSX.Element {
         draggable
         pauseOnHover
       />
-      {children}
+      <Timezones
+        zoneNames={[
+          'Asia/Krasnoyarsk',
+          'Europe/Moscow',
+        ]}
+      />
     </div>
   );
 }
 
-export default Layout;
+export default App;

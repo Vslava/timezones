@@ -3,17 +3,9 @@ import * as ReactDOM from 'react-dom';
 
 import '../stylesheets';
 
-import Layout from './components/layout';
-import Timezones from './components/timezones';
+import App from './components/app';
 
 ReactDOM.render(
-  <Layout>
-    <Timezones
-      zoneNames={[
-        'Asia/Krasnoyarsk',
-        'Europe/Moscow',
-      ]}
-    />
-  </Layout>,
+  <App />,
   document.getElementById('app'),
 );
