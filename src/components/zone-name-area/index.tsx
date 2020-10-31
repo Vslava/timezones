@@ -31,14 +31,14 @@ class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
     };
   }
 
-  private clickHandler = () => {
+  private handleClick = () => {
     this.setState({
       isRenameInputShown: true,
       isZoneNameValid: true,
     });
   };
 
-  private zoneNameInputEnterHandler = (text: string) => {
+  private handleZoneNameInputEnter = (text: string) => {
     const {
       onZoneNameChange,
       isZoneNameValid,
@@ -57,7 +57,7 @@ class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
   };
 
   private zoneNameText = (zoneName: string, className: string) => (
-    <p className={className} onClick={this.clickHandler} onKeyDown={this.clickHandler}>
+    <p className={className} onClick={this.handleClick} onKeyDown={this.handleClick}>
       {zoneName}
     </p>
   );
@@ -67,7 +67,7 @@ class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
       <TextInput
         className={className}
         value={zoneName}
-        onEnter={this.zoneNameInputEnterHandler}
+        onEnter={this.handleZoneNameInputEnter}
         autoFocus
       />
     </div>

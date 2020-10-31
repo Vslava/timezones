@@ -41,7 +41,7 @@ class Timezone extends Component<ITimezoneProps, ITimezoneState> {
     };
   }
 
-  private zoneNameChangeHandler = (zoneName: string) => {
+  private handleZoneNameChange = (zoneName: string) => {
     this.setState({ zoneName });
   };
 
@@ -76,7 +76,7 @@ class Timezone extends Component<ITimezoneProps, ITimezoneState> {
         <ZoneNameArea
           style={zoneNameAreaStyle}
           zoneName={zoneName}
-          onZoneNameChange={this.zoneNameChangeHandler}
+          onZoneNameChange={this.handleZoneNameChange}
           isZoneNameValid={this.zoneNameValidator}
         />
         <p className={style.zoneDate}>{zoneDate}</p>

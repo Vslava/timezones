@@ -20,7 +20,7 @@ class Input extends Component<IInputProps, IInputState> {
     };
   }
 
-  private keyPressHandler = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+  private handleKeyPress = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     const { onEnter } = this.props;
     const { text } = this.state;
 
@@ -29,7 +29,7 @@ class Input extends Component<IInputProps, IInputState> {
     }
   };
 
-  private keyDownHandler = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+  private handleKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     const { onEnter, value: oldValue } = this.props;
 
     if (onEnter && ev.key === 'Escape') {
@@ -37,13 +37,13 @@ class Input extends Component<IInputProps, IInputState> {
     }
   };
 
-  private changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  private handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
 
     this.setState({ text: value });
   };
 
-  private blurHandler = () => {
+  private handleBlur = () => {
     const { onEnter } = this.props;
     const { text } = this.state;
 
@@ -57,10 +57,10 @@ class Input extends Component<IInputProps, IInputState> {
     return (
       <input
         value={value}
-        onKeyPress={this.keyPressHandler}
-        onKeyDown={this.keyDownHandler}
-        onChange={this.changeHandler}
-        onBlur={this.blurHandler}
+        onKeyPress={this.handleKeyPress}
+        onKeyDown={this.handleKeyDown}
+        onChange={this.handleChange}
+        onBlur={this.handleBlur}
         className={className}
         // eslint-disable-next-line jsx-a11y/no-autofocus
         autoFocus={autoFocus}
