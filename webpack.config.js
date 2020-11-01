@@ -15,6 +15,7 @@ module.exports = {
       '.js',
       '.scss',
       '.css',
+      '.svg',
     ],
   },
   module: {
@@ -64,6 +65,18 @@ module.exports = {
           },
           'css-loader',
           'postcss-loader',
+        ],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          '@svgr/webpack',
+          {
+            loader: 'svgo-loader',
+            options: {
+              plugins: [{ collapseGroups: false }],
+            },
+          },
         ],
       },
     ],
