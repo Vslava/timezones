@@ -2,24 +2,12 @@ import React, { Component } from 'react';
 
 import ZoneNameArea from '../zone-name-area';
 
+import {
+  zoneDateAndTime,
+  zoneNameValidator,
+} from '../../lib/util';
+
 import style from './style.scss';
-
-function zoneDateAndTime(dateTime: Date, zoneName: string) {
-  const zoneDate = dateTime.toLocaleDateString(
-    undefined,
-    { timeZone: zoneName, day: '2-digit', month: 'long' },
-  );
-
-  const zoneTime = dateTime.toLocaleTimeString(
-    undefined,
-    { timeZone: zoneName },
-  );
-
-  return {
-    zoneDate,
-    zoneTime,
-  };
-}
 
 interface ITimezoneState {
   zoneName: string,
@@ -45,16 +33,6 @@ class Timezone extends Component<ITimezoneProps, ITimezoneState> {
     this.setState({ zoneName });
   };
 
-  private zoneNameValidator = (zoneName: string): boolean => {
-    try {
-      zoneDateAndTime(new Date(), zoneName);
-
-      return true;
-    } catch (err) {
-      return false;
-    }
-  };
-
   render(): JSX.Element {
     const { dateTime } = this.props;
     const { zoneName } = this.state;
@@ -77,7 +55,7 @@ class Timezone extends Component<ITimezoneProps, ITimezoneState> {
           style={zoneNameAreaStyle}
           zoneName={zoneName}
           onZoneNameChange={this.handleZoneNameChange}
-          isZoneNameValid={this.zoneNameValidator}
+          isZoneNameValid={zoneNameValidator}
         />
         <p className={style.zoneDate}>{zoneDate}</p>
       </div>
