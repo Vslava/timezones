@@ -6,3 +6,4 @@ See time in different timezones simultaneously
 - resize the text size when the panels changes size
 - suggest a zone name during typing
 - close a timezone panel
+- save and load timezone collection between sessions
