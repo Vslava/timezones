@@ -56,6 +56,10 @@ class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
     }
   };
 
+  private handleZoneNameInputEscape = () => {
+    this.setState({ isRenameInputShown: false });
+  };
+
   private zoneNameText = (zoneName: string, className: string) => (
     <p className={className} onClick={this.handleClick} onKeyDown={this.handleClick}>
       {zoneName}
@@ -68,6 +72,7 @@ class ZoneNameArea extends Component<IZoneNameAreaProps, IZoneNameAreaState> {
         className={className}
         value={zoneName}
         onEnter={this.handleZoneNameInputEnter}
+        onEscape={this.handleZoneNameInputEscape}
         autoFocus
       />
     </div>

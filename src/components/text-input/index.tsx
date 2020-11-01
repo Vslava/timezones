@@ -3,6 +3,7 @@ import React, { ChangeEvent, Component } from 'react';
 interface IInputProps {
   value: string,
   onEnter?: (text: string) => void,
+  onEscape?: () => void,
   className?: string,
   autoFocus?: boolean,
 }
@@ -30,10 +31,10 @@ class Input extends Component<IInputProps, IInputState> {
   };
 
   private handleKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
-    const { onEnter, value: oldValue } = this.props;
+    const { onEscape } = this.props;
 
     if (ev.key === 'Escape') {
-      if (onEnter) { onEnter(oldValue); }
+      if (onEscape) { onEscape(); }
     }
   };
 
@@ -44,10 +45,9 @@ class Input extends Component<IInputProps, IInputState> {
   };
 
   private handleBlur = () => {
-    const { onEnter } = this.props;
-    const { text } = this.state;
+    const { onEscape } = this.props;
 
-    if (onEnter) { onEnter(text); }
+    if (onEscape) { onEscape(); }
   };
 
   render(): JSX.Element {
