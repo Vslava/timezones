@@ -24,16 +24,16 @@ class Input extends Component<IInputProps, IInputState> {
     const { onEnter } = this.props;
     const { text } = this.state;
 
-    if (onEnter && ev.key === 'Enter') {
-      onEnter(text);
+    if (ev.key === 'Enter') {
+      if (onEnter) { onEnter(text); }
     }
   };
 
   private handleKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     const { onEnter, value: oldValue } = this.props;
 
-    if (onEnter && ev.key === 'Escape') {
-      onEnter(oldValue);
+    if (ev.key === 'Escape') {
+      if (onEnter) { onEnter(oldValue); }
     }
   };
 
