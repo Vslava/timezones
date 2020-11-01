@@ -4,7 +4,7 @@ import ZoneNameArea from '../zone-name-area';
 
 import {
   zoneDateAndTime,
-  zoneNameValidator,
+  isZoneNameValid,
 } from '../../lib/util';
 
 import style from './style.scss';
@@ -55,7 +55,7 @@ class Timezone extends Component<ITimezoneProps, ITimezoneState> {
           style={zoneNameAreaStyle}
           zoneName={zoneName}
           onZoneNameChange={this.handleZoneNameChange}
-          isZoneNameValid={zoneNameValidator}
+          isZoneNameValid={isZoneNameValid}
         />
         <p className={style.zoneDate}>{zoneDate}</p>
       </div>

@@ -23,7 +23,7 @@ export function zoneDateAndTime(
   };
 }
 
-export function zoneNameValidator(zoneName: string): boolean {
+export function isZoneNameValid(zoneName: string): boolean {
   try {
     zoneDateAndTime(new Date(), zoneName);
 
