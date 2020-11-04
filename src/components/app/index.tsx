@@ -1,23 +1,39 @@
 import React, { Component } from 'react';
 
 import NotifyArea from '../notify-area';
-import Timezones from '../timezones';
+import Timezone from '../timezone';
 import NewTimezoneArea from '../new-timezone-area';
 
+import { INITIAL_ZONENAMES } from '../../lib/constants';
+
+import style from './style.scss';
+
 interface IAppState {
+  dateTime: Date,
   zoneNames: string[],
 }
 
 class App extends Component<unknown, IAppState> {
+  timeID!: number;
+
   constructor(props: unknown) {
     super(props);
 
     this.state = {
-      zoneNames: [
-        'Asia/Krasnoyarsk',
-        'Europe/Moscow',
-      ],
+      dateTime: new Date(),
+      zoneNames: INITIAL_ZONENAMES,
     };
+  }
+
+  componentDidMount(): void {
+    this.timeID = window.setInterval(
+      () => this.tick(),
+      1000,
+    );
+  }
+
+  componentWillUnmount(): void {
+    clearInterval(this.timeID);
   }
 
   private handlerNewTimezoneName = (zoneName: string) => {
@@ -28,8 +44,38 @@ class App extends Component<unknown, IAppState> {
     });
   };
 
-  render(): JSX.Element {
+  private handleTimezoneRename = (zoneIdx: number, newZoneName: string) => {
     const { zoneNames } = this.state;
+
+    const newZoneNames = [...zoneNames];
+    newZoneNames[zoneIdx] = newZoneName;
+
+    this.setState({
+      zoneNames: newZoneNames,
+    });
+  };
+
+  private makeTimezone = (
+    zoneName: string,
+    zoneIdx: number,
+    dateTime: Date,
+  ) => (
+    <Timezone
+      id={zoneIdx}
+      zoneName={zoneName}
+      dateTime={dateTime}
+      onRename={this.handleTimezoneRename}
+    />
+  );
+
+  tick(): void {
+    this.setState({
+      dateTime: new Date(),
+    });
+  }
+
+  render(): JSX.Element {
+    const { zoneNames, dateTime } = this.state;
 
     return (
       <div id="layout">
@@ -37,9 +83,13 @@ class App extends Component<unknown, IAppState> {
         <NewTimezoneArea
           onNewTimezoneName={this.handlerNewTimezoneName}
         />
-        <Timezones
-          zoneNames={zoneNames}
-        />
+        <div className={style.timezones}>
+          {
+            zoneNames.map((zoneName, zoneIdx) => (
+              this.makeTimezone(zoneName, zoneIdx, dateTime)
+            ))
+          }
+        </div>
       </div>
     );
   }

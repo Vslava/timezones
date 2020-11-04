@@ -14,8 +14,10 @@ interface ITimezoneState {
 }
 
 interface ITimezoneProps {
+  id: number,
   zoneName: string,
   dateTime: Date,
+  onRename: (zoneIdx: number, zoneName: string) => void,
 }
 
 class Timezone extends Component<ITimezoneProps, ITimezoneState> {
@@ -30,7 +32,11 @@ class Timezone extends Component<ITimezoneProps, ITimezoneState> {
   }
 
   private handleZoneNameChange = (zoneName: string) => {
+    const { id, onRename } = this.props;
+
     this.setState({ zoneName });
+
+    onRename(id, zoneName);
   };
 
   render(): JSX.Element {
